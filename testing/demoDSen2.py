@@ -6,10 +6,12 @@ from supres import DSen2_20, DSen2_60
 import sys
 sys.path.append('../')
 from utils.imresize import imresize
+import tensorflow as tf
 
 
 DATA_PATH = '../data/'
 
+print(tf.test.is_built_with_cuda())
 
 def readh5(fname, im60=False, imGT=False):
     with h5py.File(DATA_PATH+fname, 'r') as f:
@@ -58,6 +60,7 @@ if __name__ == '__main__':
     cax = plt.imshow(np.abs(SR20[:, :, 4]-imGT[:, :, 4]), vmin=0, vmax=200)
     fig.colorbar(cax)
     ax.set_title('Absolute differences to the GT, band B11')
+    plt.savefig("Siberia_B11.png")
     plt.show(block=False)
 
     #
@@ -77,6 +80,7 @@ if __name__ == '__main__':
     cax = plt.imshow(np.abs(SR60[:, :, 1]-imGT[:, :, 1]), vmin=0, vmax=200)
     fig.colorbar(cax)
     ax.set_title('Absolute differences to the GT, band B9')
+    plt.savefig("SouthAfrica_B9.png")
     plt.show(block=False)
 
     #
@@ -109,6 +113,7 @@ if __name__ == '__main__':
     ax2 = fig.add_subplot(122)
     plt.imshow(SR60[:, :, 0], vmin=np.min(im60[:, :, 0]), vmax=np.max(im60[:, :, 0]))
     ax2.set_title('Band B1, 10m super-resolution')
+    plt.savefig("Malmo_B1.png")
     plt.show(block=False)
 
     fig = plt.figure(5)
@@ -118,6 +123,7 @@ if __name__ == '__main__':
     ax2 = fig.add_subplot(122)
     plt.imshow(SR20[:, :, 1], vmin=np.min(im20[:, :, 1]), vmax=np.max(im20[:, :, 1]))
     ax2.set_title('Band B6, 10m super-resolution')
+    plt.savefig("Malmo_B6.png")
     plt.show(block=False)
 
     #
@@ -163,5 +169,5 @@ if __name__ == '__main__':
     ax2 = fig.add_subplot(122)
     plt.imshow(imSR)
     ax2.set_title('Color composite (B12,B8a,B5) \n 10m super-resolution')
-
+    plt.savefig("SharkBay.png")
     plt.show()

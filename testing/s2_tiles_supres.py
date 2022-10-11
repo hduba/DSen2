@@ -338,6 +338,8 @@ else:
 if validated_10m_bands and validated_20m_bands:
     print("Super-resolving the 20m data into 10m bands")
     sr20 = DSen2_20(data10, data20, deep=False)
+    print(sr20)
+    print(sr20.shape)
 else:
     sr20 = None
 

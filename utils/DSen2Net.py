@@ -1,7 +1,11 @@
 from __future__ import division
-from keras.models import Model, Input
-from keras.layers import Conv2D, Concatenate, Activation, Lambda, Add
-import keras.backend as K
+#from keras.models import Model
+#from keras.layers import Conv2D, Concatenate, Activation, Lambda, Add, Input
+
+from tensorflow.keras import Model
+from tensorflow.keras.layers import Conv2D, Concatenate, Activation, Lambda, Add, Input
+import tensorflow.keras.backend as K
+
 
 K.set_image_data_format('channels_first')
 
